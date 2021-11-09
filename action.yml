@@ -20,5 +20,5 @@ runs:
       run: ./wizcli auth --id "${{ inputs.wiz-access-key }}" --secret "${{ inputs.wiz-secret-key }}"
       shell: bash
     - id: run-policy-scan
-      run: ./wizcli iac scan --path ${{ github.action_path }}/${{ inputs.template-to-scan }}
+      run: ./wizcli iac scan --path ${{ inputs.template-to-scan }}
       shell: bash
