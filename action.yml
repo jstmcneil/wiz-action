@@ -1,0 +1,24 @@
+name: 'Wiz-CLI Action'
+description: 'Downloads the wiz-cli binary, authenticates to UAL's Wiz instance, and then runs a policy scan on supplied IaC template.'
+inputs:
+  template-to-scan:  # id of input
+    description: 'Template that should be scanned prior to deployment.'
+    required: true
+  wiz-access-key:
+    description:'Access key for Wiz authentication.'
+    required: true
+  wiz-secret-key:
+    description: 'Secret key for Wiz authentication.'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - id: install-wiz
+      run: curl -o wizcli https://wizcli.app.wiz.io/wizcli; chmod +x wizcli
+      shell: bash
+    - id: authenticate-to-wiz
+      run: ./wizcli auth --id "${{ inputs.wiz-access-key }}" --secret "${{ inputs.wiz-secret-key }}"
+      shell: bash
+    - id: run-policy-scan
+      run: ./wizcli iac scan --path ${{ github.action_path }}/${{ inputs.template-to-scan }}
+      shell: bash
