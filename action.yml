@@ -5,7 +5,7 @@ inputs:
     description: 'Template that should be scanned prior to deployment.'
     required: true
   wiz-access-key:
-    description:'Access key for Wiz authentication.'
+    description: 'Access key for Wiz authentication.'
     required: true
   wiz-secret-key:
     description: 'Secret key for Wiz authentication.'
