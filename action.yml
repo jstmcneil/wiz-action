@@ -1,5 +1,5 @@
 name: 'Wiz-CLI Action'
-description: 'Downloads the wiz-cli binary, authenticates to UAL's Wiz instance, and then runs a policy scan on supplied IaC template.'
+description: 'Downloads the wiz-cli binary, authenticates to the UAL Wiz instance, and then runs a policy scan on supplied IaC template.'
 inputs:
   template-to-scan:  # id of input
     description: 'Template that should be scanned prior to deployment.'
